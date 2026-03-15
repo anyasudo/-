@@ -1,4 +1,4 @@
-﻿#ifndef CAR_HPP
+#ifndef CAR_HPP
 #define CAR_HPP
 
 #include <iostream>

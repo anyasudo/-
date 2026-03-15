@@ -8,7 +8,7 @@ namespace mt {
             return false;
         }
 
-        std::string allowed_letters = "АВЕКМНОРСТУХ";
+        std::string allowed_letters = "РђР’Р•РљРњРќРћР РЎРўРЈРҐ";
 
         bool first_ok = false;
         for (char letter : allowed_letters) {
@@ -41,7 +41,7 @@ namespace mt {
     }
 
     std::string Car::generate_random_plate_() const {
-        static const std::string letters = "АВЕКМНОРСТУХ";
+        static const std::string letters = "РђР’Р•РљРњРќРћР РЎРўРЈРҐ";
         static std::mt19937 rng(std::chrono::steady_clock::now().time_since_epoch().count());
         static std::uniform_int_distribution<int> letter_dist(0, letters.size() - 1);
         static std::uniform_int_distribution<int> digit_dist(0, 9);
@@ -66,14 +66,14 @@ namespace mt {
         std::sort(items.begin(), items.end());
     }
 
-    // Конструктор по умолчанию
-    Car::Car() : brand_("Неизвестно"), model_("Неизвестно"),
-        license_plate_("А000АА"), mileage_(0), car_radio_(nullptr) {
+    // РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ
+    Car::Car() : brand_("РќРµРёР·РІРµСЃС‚РЅРѕ"), model_("РќРµРёР·РІРµСЃС‚РЅРѕ"),
+        license_plate_("Рђ000РђРђ"), mileage_(0), car_radio_(nullptr) {
         trunk_items_ = new std::vector<std::string>();
-        std::cout << "Вызван конструктор по умолчанию" << std::endl;
+        std::cout << "Р’С‹Р·РІР°РЅ РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ" << std::endl;
     }
 
-    // Конструктор с параметрами
+    // РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ СЃ РїР°СЂР°РјРµС‚СЂР°РјРё
     Car::Car(const std::string& brand, const std::string& model,
         const std::string& license_plate, int mileage,
         const std::vector<std::string>& trunk_items) :
@@ -82,23 +82,23 @@ namespace mt {
 
         if (!check_license_format_(license_plate)) {
             throw std::invalid_argument(
-                "Гос. номер должен быть в формате: БУКВА + 3 ЦИФРЫ + 2 БУКВЫ\n"
-                "Разрешенные буквы: А, В, Е, К, М, Н, О, Р, С, Т, У, Х\n"
-                "Пример: А123ВС, М456ОР, Х789ТУ");
+                "Р“РѕСЃ. РЅРѕРјРµСЂ РґРѕР»Р¶РµРЅ Р±С‹С‚СЊ РІ С„РѕСЂРјР°С‚Рµ: Р‘РЈРљР’Рђ + 3 Р¦РР¤Р Р« + 2 Р‘РЈРљР’Р«\n"
+                "Р Р°Р·СЂРµС€РµРЅРЅС‹Рµ Р±СѓРєРІС‹: Рђ, Р’, Р•, Рљ, Рњ, Рќ, Рћ, Р , РЎ, Рў, РЈ, РҐ\n"
+                "РџСЂРёРјРµСЂ: Рђ123Р’РЎ, Рњ456РћР , РҐ789РўРЈ");
         }
 
         trunk_items_ = new std::vector<std::string>(trunk_items);
-        std::cout << "Вызван конструктор с параметрами" << std::endl;
+        std::cout << "Р’С‹Р·РІР°РЅ РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ СЃ РїР°СЂР°РјРµС‚СЂР°РјРё" << std::endl;
     }
 
-    // Конструктор копирования
+    // РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РєРѕРїРёСЂРѕРІР°РЅРёСЏ
     Car::Car(const Car& other) :
         brand_(other.brand_), model_(other.model_),
         license_plate_(other.license_plate_), mileage_(other.mileage_) {
 
         trunk_items_ = new std::vector<std::string>(*other.trunk_items_);
 
-        // Копируем магнитолу если она есть
+        // РљРѕРїРёСЂСѓРµРј РјР°РіРЅРёС‚РѕР»Сѓ РµСЃР»Рё РѕРЅР° РµСЃС‚СЊ
         if (other.car_radio_) {
             car_radio_ = new Radio(*other.car_radio_);
         }
@@ -106,12 +106,12 @@ namespace mt {
             car_radio_ = nullptr;
         }
 
-        std::cout << "Вызван конструктор копирования" << std::endl;
+        std::cout << "Р’С‹Р·РІР°РЅ РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РєРѕРїРёСЂРѕРІР°РЅРёСЏ" << std::endl;
     }
 
-    // Оператор присваивания
+    // РћРїРµСЂР°С‚РѕСЂ РїСЂРёСЃРІР°РёРІР°РЅРёСЏ
     Car& Car::operator=(const Car& other) {
-        std::cout << "Вызван оператор присваивания" << std::endl;
+        std::cout << "Р’С‹Р·РІР°РЅ РѕРїРµСЂР°С‚РѕСЂ РїСЂРёСЃРІР°РёРІР°РЅРёСЏ" << std::endl;
 
         if (this != &other) {
             brand_ = other.brand_;
@@ -134,7 +134,7 @@ namespace mt {
         return *this;
     }
 
-    // Деструктор
+    // Р”РµСЃС‚СЂСѓРєС‚РѕСЂ
     Car::~Car() {
         if (trunk_items_ != nullptr) {
             trunk_items_->clear();
@@ -143,49 +143,49 @@ namespace mt {
 
         delete car_radio_;
 
-        std::cout << "Вызван деструктор для " << brand_ << " " << model_ << std::endl;
+        std::cout << "Р’С‹Р·РІР°РЅ РґРµСЃС‚СЂСѓРєС‚РѕСЂ РґР»СЏ " << brand_ << " " << model_ << std::endl;
     }
 
     void Car::set_license_plate(const std::string& license_plate) {
         if (!check_license_format_(license_plate)) {
             throw std::invalid_argument(
-                "Гос. номер должен быть в формате: БУКВА + 3 ЦИФРЫ + 2 БУКВЫ\n"
-                "Разрешенные буквы: А, В, Е, К, М, Н, О, Р, С, Т, У, Х\n"
-                "Пример: А123ВС, М456ОР, Х789ТУ");
+                "Р“РѕСЃ. РЅРѕРјРµСЂ РґРѕР»Р¶РµРЅ Р±С‹С‚СЊ РІ С„РѕСЂРјР°С‚Рµ: Р‘РЈРљР’Рђ + 3 Р¦РР¤Р Р« + 2 Р‘РЈРљР’Р«\n"
+                "Р Р°Р·СЂРµС€РµРЅРЅС‹Рµ Р±СѓРєРІС‹: Рђ, Р’, Р•, Рљ, Рњ, Рќ, Рћ, Р , РЎ, Рў, РЈ, РҐ\n"
+                "РџСЂРёРјРµСЂ: Рђ123Р’РЎ, Рњ456РћР , РҐ789РўРЈ");
         }
 
         license_plate_ = license_plate;
-        std::cout << "Гос. номер успешно изменен на: " << license_plate_ << std::endl;
+        std::cout << "Р“РѕСЃ. РЅРѕРјРµСЂ СѓСЃРїРµС€РЅРѕ РёР·РјРµРЅРµРЅ РЅР°: " << license_plate_ << std::endl;
     }
 
     void Car::rollback_mileage(int x) {
         if (x > mileage_) {
-            throw std::invalid_argument("Нельзя скрутить больше, чем есть пробега");
+            throw std::invalid_argument("РќРµР»СЊР·СЏ СЃРєСЂСѓС‚РёС‚СЊ Р±РѕР»СЊС€Рµ, С‡РµРј РµСЃС‚СЊ РїСЂРѕР±РµРіР°");
         }
         mileage_ -= x;
-        std::cout << "Пробег скручен на " << x << " км. Текущий пробег: " << mileage_ << std::endl;
+        std::cout << "РџСЂРѕР±РµРі СЃРєСЂСѓС‡РµРЅ РЅР° " << x << " РєРј. РўРµРєСѓС‰РёР№ РїСЂРѕР±РµРі: " << mileage_ << std::endl;
     }
 
     void Car::print_info() const {
-        std::cout << "=== Информация об автомобиле ===" << std::endl;
-        std::cout << "Марка: " << brand_ << std::endl;
-        std::cout << "Модель: " << model_ << std::endl;
-        std::cout << "Гос. номер: " << license_plate_ << std::endl;
-        std::cout << "Пробег: " << mileage_ << " км" << std::endl;
+        std::cout << "=== РРЅС„РѕСЂРјР°С†РёСЏ РѕР± Р°РІС‚РѕРјРѕР±РёР»Рµ ===" << std::endl;
+        std::cout << "РњР°СЂРєР°: " << brand_ << std::endl;
+        std::cout << "РњРѕРґРµР»СЊ: " << model_ << std::endl;
+        std::cout << "Р“РѕСЃ. РЅРѕРјРµСЂ: " << license_plate_ << std::endl;
+        std::cout << "РџСЂРѕР±РµРі: " << mileage_ << " РєРј" << std::endl;
 
-        std::cout << "Магнитола: ";
+        std::cout << "РњР°РіРЅРёС‚РѕР»Р°: ";
         if (car_radio_) {
             std::cout << car_radio_->model_name << " (" << car_radio_->description << ") - "
-                << car_radio_->price << " руб." << std::endl;
+                << car_radio_->price << " СЂСѓР±." << std::endl;
         }
         else {
-            std::cout << "не установлена" << std::endl;
+            std::cout << "РЅРµ СѓСЃС‚Р°РЅРѕРІР»РµРЅР°" << std::endl;
         }
 
-        std::cout << "Вещи в багажнике (" << trunk_items_->size() << "): ";
+        std::cout << "Р’РµС‰Рё РІ Р±Р°РіР°Р¶РЅРёРєРµ (" << trunk_items_->size() << "): ";
 
         if (trunk_items_->empty()) {
-            std::cout << "багажник пуст";
+            std::cout << "Р±Р°РіР°Р¶РЅРёРє РїСѓСЃС‚";
         }
         else {
             for (size_t i = 0; i < trunk_items_->size(); ++i) {
@@ -200,53 +200,53 @@ namespace mt {
 
     void Car::add_to_trunk(const std::string& item) {
         trunk_items_->push_back(item);
-        std::cout << "Добавлено в багажник: " << item << std::endl;
+        std::cout << "Р”РѕР±Р°РІР»РµРЅРѕ РІ Р±Р°РіР°Р¶РЅРёРє: " << item << std::endl;
     }
 
     void Car::remove_from_trunk(const std::string& item) {
         auto it = std::find(trunk_items_->begin(), trunk_items_->end(), item);
         if (it != trunk_items_->end()) {
             trunk_items_->erase(it);
-            std::cout << "Удалено из багажника: " << item << std::endl;
+            std::cout << "РЈРґР°Р»РµРЅРѕ РёР· Р±Р°РіР°Р¶РЅРёРєР°: " << item << std::endl;
         }
         else {
-            std::cout << "Предмет " << item << " не найден в багажнике" << std::endl;
+            std::cout << "РџСЂРµРґРјРµС‚ " << item << " РЅРµ РЅР°Р№РґРµРЅ РІ Р±Р°РіР°Р¶РЅРёРєРµ" << std::endl;
         }
     }
 
-    // Методы для работы с магнитолой
+    // РњРµС‚РѕРґС‹ РґР»СЏ СЂР°Р±РѕС‚С‹ СЃ РјР°РіРЅРёС‚РѕР»РѕР№
     void Car::set_radio(const Radio& radio) {
         if (car_radio_) {
             *car_radio_ = radio;
-            std::cout << "Магнитола заменена на: " << radio.model_name << std::endl;
+            std::cout << "РњР°РіРЅРёС‚РѕР»Р° Р·Р°РјРµРЅРµРЅР° РЅР°: " << radio.model_name << std::endl;
         }
         else {
             car_radio_ = new Radio(radio);
-            std::cout << "Магнитола установлена: " << radio.model_name << std::endl;
+            std::cout << "РњР°РіРЅРёС‚РѕР»Р° СѓСЃС‚Р°РЅРѕРІР»РµРЅР°: " << radio.model_name << std::endl;
         }
     }
 
     Radio Car::get_radio() const {
         if (!car_radio_) {
-            throw std::runtime_error("В машине нет магнитолы!");
+            throw std::runtime_error("Р’ РјР°С€РёРЅРµ РЅРµС‚ РјР°РіРЅРёС‚РѕР»С‹!");
         }
         return *car_radio_;
     }
 
     void Car::remove_radio() {
         if (car_radio_) {
-            std::cout << "Магнитола удалена: " << car_radio_->model_name << std::endl;
+            std::cout << "РњР°РіРЅРёС‚РѕР»Р° СѓРґР°Р»РµРЅР°: " << car_radio_->model_name << std::endl;
             delete car_radio_;
             car_radio_ = nullptr;
         }
         else {
-            std::cout << "В машине нет магнитолы для удаления" << std::endl;
+            std::cout << "Р’ РјР°С€РёРЅРµ РЅРµС‚ РјР°РіРЅРёС‚РѕР»С‹ РґР»СЏ СѓРґР°Р»РµРЅРёСЏ" << std::endl;
         }
     }
 
-    // Оператор +
+    // РћРїРµСЂР°С‚РѕСЂ +
     Car Car::operator+(const Car& other) const {
-        std::cout << "Выполняется оператор +" << std::endl;
+        std::cout << "Р’С‹РїРѕР»РЅСЏРµС‚СЃСЏ РѕРїРµСЂР°С‚РѕСЂ +" << std::endl;
 
         Car result;
         result.brand_ = this->brand_;
@@ -265,9 +265,9 @@ namespace mt {
         return result;
     }
 
-    // Оператор -
+    // РћРїРµСЂР°С‚РѕСЂ -
     Car Car::operator-(const Car& other) const {
-        std::cout << "Выполняется оператор -" << std::endl;
+        std::cout << "Р’С‹РїРѕР»РЅСЏРµС‚СЃСЏ РѕРїРµСЂР°С‚РѕСЂ -" << std::endl;
 
         Car result;
         result.brand_ = this->brand_;
@@ -289,9 +289,9 @@ namespace mt {
         return result;
     }
 
-    // Оператор /
+    // РћРїРµСЂР°С‚РѕСЂ /
     Car Car::operator/(const Car& other) const {
-        std::cout << "Выполняется оператор /" << std::endl;
+        std::cout << "Р’С‹РїРѕР»РЅСЏРµС‚СЃСЏ РѕРїРµСЂР°С‚РѕСЂ /" << std::endl;
 
         Car result;
         result.brand_ = other.brand_;
@@ -327,19 +327,19 @@ namespace mt {
 
     std::ostream& operator<<(std::ostream& os, const Car& car) {
         os << "[" << car.brand_ << " " << car.model_ << ", " << car.license_plate_
-            << ", пробег: " << car.mileage_ << " км";
+            << ", РїСЂРѕР±РµРі: " << car.mileage_ << " РєРј";
 
         if (car.car_radio_) {
-            os << ", магнитола: " << car.car_radio_->model_name;
+            os << ", РјР°РіРЅРёС‚РѕР»Р°: " << car.car_radio_->model_name;
         }
         else {
-            os << ", магнитолы нет";
+            os << ", РјР°РіРЅРёС‚РѕР»С‹ РЅРµС‚";
         }
 
-        os << ", вещи:(";
+        os << ", РІРµС‰Рё:(";
 
         if (car.trunk_items_->empty()) {
-            os << "пусто";
+            os << "РїСѓСЃС‚Рѕ";
         }
         else {
             for (size_t i = 0; i < car.trunk_items_->size(); ++i) {

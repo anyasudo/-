@@ -14,15 +14,15 @@ namespace mt {
         std::string description;
         double price;
 
-        // Конструкторы
+        // РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂС‹
         Radio();
         Radio(const std::string& name, const std::string& desc, double pr);
         Radio(const Radio& other);
 
-        // Деструктор
+        // Р”РµСЃС‚СЂСѓРєС‚РѕСЂ
         ~Radio();
 
-        // Методы
+        // РњРµС‚РѕРґС‹
         void print_info() const;
 
         friend std::ostream& operator<<(std::ostream& os, const Radio& radio);
@@ -35,35 +35,35 @@ namespace mt {
         std::vector<Car*> attached_cars_;
 
     public:
-        // Конструкторы
+        // РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂС‹
         AutoWorkshop();
         AutoWorkshop(const std::string& address);
         AutoWorkshop(const AutoWorkshop& other);
 
-        // Деструктор
+        // Р”РµСЃС‚СЂСѓРєС‚РѕСЂ
         ~AutoWorkshop();
 
-        // Геттеры
+        // Р“РµС‚С‚РµСЂС‹
         std::string get_address() const { return address_; }
         std::vector<Radio> get_available_radios() const { return available_radios_; }
         std::vector<Car*> get_attached_cars() const { return attached_cars_; }
 
-        // Сеттеры
+        // РЎРµС‚С‚РµСЂС‹
         void set_address(const std::string& address) { address_ = address; }
 
-        // Методы для работы с магнитолами
+        // РњРµС‚РѕРґС‹ РґР»СЏ СЂР°Р±РѕС‚С‹ СЃ РјР°РіРЅРёС‚РѕР»Р°РјРё
         void add_radio(const Radio& radio);
         void remove_radio(const std::string& model_name);
         void print_available_radios() const;
 
-        // Методы для работы с машинами
+        // РњРµС‚РѕРґС‹ РґР»СЏ СЂР°Р±РѕС‚С‹ СЃ РјР°С€РёРЅР°РјРё
         void attach_car(Car* car);
         void detach_car(const std::string& license_plate);
 
-        // Метод прикручивания магнитолы
+        // РњРµС‚РѕРґ РїСЂРёРєСЂСѓС‡РёРІР°РЅРёСЏ РјР°РіРЅРёС‚РѕР»С‹
         bool install_radio_to_car(const std::string& license_plate, const std::string& radio_model);
 
-        // Метод вывода информации
+        // РњРµС‚РѕРґ РІС‹РІРѕРґР° РёРЅС„РѕСЂРјР°С†РёРё
         void print_info() const;
     };
 

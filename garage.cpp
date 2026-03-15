@@ -2,61 +2,61 @@
 
 namespace mt {
 
-    // Реализация методов структуры Radio 
-    Radio::Radio() : model_name("Неизвестно"), description(""), price(0.0) {
-        std::cout << "Вызван конструктор Radio по умолчанию" << std::endl;
+    // Р РµР°Р»РёР·Р°С†РёСЏ РјРµС‚РѕРґРѕРІ СЃС‚СЂСѓРєС‚СѓСЂС‹ Radio 
+    Radio::Radio() : model_name("РќРµРёР·РІРµСЃС‚РЅРѕ"), description(""), price(0.0) {
+        std::cout << "Р’С‹Р·РІР°РЅ РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ Radio РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ" << std::endl;
     }
 
     Radio::Radio(const std::string& name, const std::string& desc, double pr)
         : model_name(name), description(desc), price(pr) {
-        std::cout << "Вызван конструктор Radio с параметрами" << std::endl;
+        std::cout << "Р’С‹Р·РІР°РЅ РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ Radio СЃ РїР°СЂР°РјРµС‚СЂР°РјРё" << std::endl;
     }
 
     Radio::Radio(const Radio& other)
         : model_name(other.model_name), description(other.description), price(other.price) {
-        std::cout << "Вызван конструктор Radio копирования" << std::endl;
+        std::cout << "Р’С‹Р·РІР°РЅ РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ Radio РєРѕРїРёСЂРѕРІР°РЅРёСЏ" << std::endl;
     }
 
     Radio::~Radio() {
-        std::cout << "Вызван деструктор Radio для " << model_name << std::endl;
+        std::cout << "Р’С‹Р·РІР°РЅ РґРµСЃС‚СЂСѓРєС‚РѕСЂ Radio РґР»СЏ " << model_name << std::endl;
     }
 
     void Radio::print_info() const {
-        std::cout << "Магнитола: " << model_name << std::endl;
-        std::cout << "Описание: " << description << std::endl;
-        std::cout << "Цена: " << price << " руб." << std::endl;
+        std::cout << "РњР°РіРЅРёС‚РѕР»Р°: " << model_name << std::endl;
+        std::cout << "РћРїРёСЃР°РЅРёРµ: " << description << std::endl;
+        std::cout << "Р¦РµРЅР°: " << price << " СЂСѓР±." << std::endl;
     }
 
     std::ostream& operator<<(std::ostream& os, const Radio& radio) {
-        os << "Магнитола \"" << radio.model_name << "\" - "
-            << radio.description << " (" << radio.price << " руб.)";
+        os << "РњР°РіРЅРёС‚РѕР»Р° \"" << radio.model_name << "\" - "
+            << radio.description << " (" << radio.price << " СЂСѓР±.)";
         return os;
     }
 
-    // Реализация методов класса AutoWorkshop
+    // Р РµР°Р»РёР·Р°С†РёСЏ РјРµС‚РѕРґРѕРІ РєР»Р°СЃСЃР° AutoWorkshop
 
-    AutoWorkshop::AutoWorkshop() : address_("Неизвестный адрес") {
-        std::cout << "Вызван конструктор AutoWorkshop по умолчанию" << std::endl;
+    AutoWorkshop::AutoWorkshop() : address_("РќРµРёР·РІРµСЃС‚РЅС‹Р№ Р°РґСЂРµСЃ") {
+        std::cout << "Р’С‹Р·РІР°РЅ РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ AutoWorkshop РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ" << std::endl;
     }
 
     AutoWorkshop::AutoWorkshop(const std::string& address) : address_(address) {
-        std::cout << "Вызван конструктор AutoWorkshop с параметрами" << std::endl;
+        std::cout << "Р’С‹Р·РІР°РЅ РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ AutoWorkshop СЃ РїР°СЂР°РјРµС‚СЂР°РјРё" << std::endl;
     }
 
     AutoWorkshop::AutoWorkshop(const AutoWorkshop& other)
         : address_(other.address_), available_radios_(other.available_radios_) {
-        std::cout << "Вызван конструктор AutoWorkshop копирования" << std::endl;
+        std::cout << "Р’С‹Р·РІР°РЅ РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ AutoWorkshop РєРѕРїРёСЂРѕРІР°РЅРёСЏ" << std::endl;
     }
 
     AutoWorkshop::~AutoWorkshop() {
-        std::cout << "Вызван деструктор AutoWorkshop для мастерской по адресу: "
+        std::cout << "Р’С‹Р·РІР°РЅ РґРµСЃС‚СЂСѓРєС‚РѕСЂ AutoWorkshop РґР»СЏ РјР°СЃС‚РµСЂСЃРєРѕР№ РїРѕ Р°РґСЂРµСЃСѓ: "
             << address_ << std::endl;
         attached_cars_.clear();
     }
 
     void AutoWorkshop::add_radio(const Radio& radio) {
         available_radios_.push_back(radio);
-        std::cout << "Магнитола добавлена в ассортимент: " << radio.model_name << std::endl;
+        std::cout << "РњР°РіРЅРёС‚РѕР»Р° РґРѕР±Р°РІР»РµРЅР° РІ Р°СЃСЃРѕСЂС‚РёРјРµРЅС‚: " << radio.model_name << std::endl;
     }
 
     void AutoWorkshop::remove_radio(const std::string& model_name) {
@@ -64,18 +64,18 @@ namespace mt {
             [&model_name](const Radio& r) { return r.model_name == model_name; });
 
         if (it != available_radios_.end()) {
-            std::cout << "Магнитола удалена из ассортимента: " << it->model_name << std::endl;
+            std::cout << "РњР°РіРЅРёС‚РѕР»Р° СѓРґР°Р»РµРЅР° РёР· Р°СЃСЃРѕСЂС‚РёРјРµРЅС‚Р°: " << it->model_name << std::endl;
             available_radios_.erase(it);
         }
         else {
-            std::cout << "Магнитола с моделью " << model_name << " не найдена" << std::endl;
+            std::cout << "РњР°РіРЅРёС‚РѕР»Р° СЃ РјРѕРґРµР»СЊСЋ " << model_name << " РЅРµ РЅР°Р№РґРµРЅР°" << std::endl;
         }
     }
 
     void AutoWorkshop::print_available_radios() const {
-        std::cout << "Доступные магнитолы в мастерской (" << available_radios_.size() << "):" << std::endl;
+        std::cout << "Р”РѕСЃС‚СѓРїРЅС‹Рµ РјР°РіРЅРёС‚РѕР»С‹ РІ РјР°СЃС‚РµСЂСЃРєРѕР№ (" << available_radios_.size() << "):" << std::endl;
         if (available_radios_.empty()) {
-            std::cout << "  Нет доступных магнитол" << std::endl;
+            std::cout << "  РќРµС‚ РґРѕСЃС‚СѓРїРЅС‹С… РјР°РіРЅРёС‚РѕР»" << std::endl;
         }
         else {
             for (size_t i = 0; i < available_radios_.size(); ++i) {
@@ -86,7 +86,7 @@ namespace mt {
 
     void AutoWorkshop::attach_car(Car* car) {
         if (car == nullptr) {
-            std::cout << "Ошибка: передан нулевой указатель на машину" << std::endl;
+            std::cout << "РћС€РёР±РєР°: РїРµСЂРµРґР°РЅ РЅСѓР»РµРІРѕР№ СѓРєР°Р·Р°С‚РµР»СЊ РЅР° РјР°С€РёРЅСѓ" << std::endl;
             return;
         }
 
@@ -94,14 +94,14 @@ namespace mt {
             [car](const Car* c) { return c->get_license_plate() == car->get_license_plate(); });
 
         if (it != attached_cars_.end()) {
-            std::cout << "Машина с гос. номером " << car->get_license_plate()
-                << " уже прикреплена к мастерской" << std::endl;
+            std::cout << "РњР°С€РёРЅР° СЃ РіРѕСЃ. РЅРѕРјРµСЂРѕРј " << car->get_license_plate()
+                << " СѓР¶Рµ РїСЂРёРєСЂРµРїР»РµРЅР° Рє РјР°СЃС‚РµСЂСЃРєРѕР№" << std::endl;
             return;
         }
 
         attached_cars_.push_back(car);
-        std::cout << "Машина " << car->get_brand() << " " << car->get_model()
-            << " (гос. номер: " << car->get_license_plate() << ") прикреплена к мастерской" << std::endl;
+        std::cout << "РњР°С€РёРЅР° " << car->get_brand() << " " << car->get_model()
+            << " (РіРѕСЃ. РЅРѕРјРµСЂ: " << car->get_license_plate() << ") РїСЂРёРєСЂРµРїР»РµРЅР° Рє РјР°СЃС‚РµСЂСЃРєРѕР№" << std::endl;
     }
 
     void AutoWorkshop::detach_car(const std::string& license_plate) {
@@ -109,12 +109,12 @@ namespace mt {
             [&license_plate](const Car* c) { return c->get_license_plate() == license_plate; });
 
         if (it != attached_cars_.end()) {
-            std::cout << "Машина " << (*it)->get_brand() << " " << (*it)->get_model()
-                << " (гос. номер: " << license_plate << ") откреплена от мастерской" << std::endl;
+            std::cout << "РњР°С€РёРЅР° " << (*it)->get_brand() << " " << (*it)->get_model()
+                << " (РіРѕСЃ. РЅРѕРјРµСЂ: " << license_plate << ") РѕС‚РєСЂРµРїР»РµРЅР° РѕС‚ РјР°СЃС‚РµСЂСЃРєРѕР№" << std::endl;
             attached_cars_.erase(it);
         }
         else {
-            std::cout << "Машина с гос. номером " << license_plate << " не найдена в мастерской" << std::endl;
+            std::cout << "РњР°С€РёРЅР° СЃ РіРѕСЃ. РЅРѕРјРµСЂРѕРј " << license_plate << " РЅРµ РЅР°Р№РґРµРЅР° РІ РјР°СЃС‚РµСЂСЃРєРѕР№" << std::endl;
         }
     }
 
@@ -123,8 +123,8 @@ namespace mt {
             [&license_plate](const Car* c) { return c->get_license_plate() == license_plate; });
 
         if (car_it == attached_cars_.end()) {
-            std::cout << "Машина с гос. номером " << license_plate
-                << " не прикреплена к этой мастерской" << std::endl;
+            std::cout << "РњР°С€РёРЅР° СЃ РіРѕСЃ. РЅРѕРјРµСЂРѕРј " << license_plate
+                << " РЅРµ РїСЂРёРєСЂРµРїР»РµРЅР° Рє СЌС‚РѕР№ РјР°СЃС‚РµСЂСЃРєРѕР№" << std::endl;
             return false;
         }
 
@@ -132,8 +132,8 @@ namespace mt {
             [&radio_model](const Radio& r) { return r.model_name == radio_model; });
 
         if (radio_it == available_radios_.end()) {
-            std::cout << "Магнитола с моделью " << radio_model
-                << " отсутствует в мастерской" << std::endl;
+            std::cout << "РњР°РіРЅРёС‚РѕР»Р° СЃ РјРѕРґРµР»СЊСЋ " << radio_model
+                << " РѕС‚СЃСѓС‚СЃС‚РІСѓРµС‚ РІ РјР°СЃС‚РµСЂСЃРєРѕР№" << std::endl;
             return false;
         }
 
@@ -142,15 +142,15 @@ namespace mt {
     }
 
     void AutoWorkshop::print_info() const {
-        std::cout << "\n=== ИНФОРМАЦИЯ ОБ АВТОМАСТЕРСКОЙ ===" << std::endl;
-        std::cout << "Адрес: " << address_ << std::endl;
+        std::cout << "\n=== РРќР¤РћР РњРђР¦РРЇ РћР‘ РђР’РўРћРњРђРЎРўР•Р РЎРљРћР™ ===" << std::endl;
+        std::cout << "РђРґСЂРµСЃ: " << address_ << std::endl;
 
-        std::cout << "\n-- Доступные магнитолы --" << std::endl;
+        std::cout << "\n-- Р”РѕСЃС‚СѓРїРЅС‹Рµ РјР°РіРЅРёС‚РѕР»С‹ --" << std::endl;
         print_available_radios();
 
-        std::cout << "\n-- Прикрепленные машины (" << attached_cars_.size() << ") --" << std::endl;
+        std::cout << "\n-- РџСЂРёРєСЂРµРїР»РµРЅРЅС‹Рµ РјР°С€РёРЅС‹ (" << attached_cars_.size() << ") --" << std::endl;
         if (attached_cars_.empty()) {
-            std::cout << "  Нет прикрепленных машин" << std::endl;
+            std::cout << "  РќРµС‚ РїСЂРёРєСЂРµРїР»РµРЅРЅС‹С… РјР°С€РёРЅ" << std::endl;
         }
         else {
             for (size_t i = 0; i < attached_cars_.size(); ++i) {
